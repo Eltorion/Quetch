@@ -19,12 +19,10 @@ namespace Quetch_simulation
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            // Считывание данных
             int k = Convert.ToInt32(kITextBox.Text);
             double tmax = Convert.ToDouble(tmaxITextBox.Text);
             double lambda = Convert.ToDouble(lambdaITextBox.Text);
             double mu = Convert.ToDouble(muITextBox.Text);
-            // Запуск алгоритмов
             Quetch quetch = new Quetch(k);
             if (randomRButton.Checked)
                 quetch.RandomAdd(tmax, lambda, mu);
@@ -32,7 +30,6 @@ namespace Quetch_simulation
                 quetch.RoundRobinAdd(tmax, lambda, mu);
             if (jsqRButton.Checked)
                 quetch.JSQAdd(tmax, lambda, mu);
-            // Вывод результатов
             countOfRequestsOTextBox.Text = Convert.ToString(quetch.GetCountOfProcessed());
             averageRequestsInQuetchOTextBox.Text = Convert.ToString(quetch.ReqCount);
             averageTimeInQuetchOTextBox.Text = quetch.AverageTimeRequestInQuetch().ToString("0.#####");
